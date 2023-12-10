@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Testing Templating in golang</title>
+</head>
+
+<body>
+    {{/*example how to use actions */}}
+    <tr>
+        <td>{{"Name"}}</td>
+        <td>: {{.Name}}</td>
+    </tr>
+
+    <br />
+    <tr>
+        <td>Gender</td>
+        {{$gender := .Gender}}
+        <td>
+            {{$gender}}
+        </td>
+    </tr>
+
+    <br />
+    <tr>
+        <td>Hobbies</td>
+        <td>:
+            {{range $index, $elem := .Hobbies}}
+            {{$elem}},
+            {{end}}
+        </td>
+    </tr>
+    <br />
+
+    <tr>
+        <td>Affiliation:</td>
+        <td>{{.Info.Affiliation}}</td>
+        <td>({{.Info.GetAffiliationDetailInfo}})</td>
+    </tr>
+    <br>
+
+    {{with .Info}}
+    <tr>
+        <td>Address</td>
+        <td>: {{.Address}}</td>
+    </tr>
+    {{end}}
+    <br/>
+
+    {{if eq .Name "Fadil"}}
+    <tr>
+        <td style="font-weight: bold;">
+            I'm The Web Ops Engineer
+        </td>
+    </tr>
+    {{end}}
+</body>
+
+</html>
